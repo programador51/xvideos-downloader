@@ -29,11 +29,8 @@
     "typescript": "5.3.3"
   },
   "manifest": {
-    "permissions": [
-      "downloads"
-    ],
     "host_permissions": [
-      "https://*/*"
+      "https://cdn77-vid.xvideos-cdn.com/*"
     ]
   }
 }

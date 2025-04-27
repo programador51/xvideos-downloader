@@ -68,9 +68,14 @@ export default function Options() {
           placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
         />
         {state.hasPremium ? (
-          <small className="text-primary">
+          <Fragment>
+            <small className="text-primary">
             <strong>Premium active</strong>
           </small>
+          <small className="d-block small">
+            Refresh xvideos page if you still seeing the ads to apply changes
+          </small>
+          </Fragment>
         ) : (
           <div>
             You don't have premium,{" "}
