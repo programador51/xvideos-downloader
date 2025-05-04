@@ -147,7 +147,14 @@ export async function downloadVideoV2(
   }) => void
 ): Promise<string[]> {
   const overviews = await retrieveVideoQualitys(url)
-  const item = overviews.find((item) => item.quality === `${quality}p`)
+  const qualityToSearch = `${quality}p`; 
+
+  const parsedOverviews = overviews.map(item=>({
+    ...item,
+    quality:item.quality.replace(".m3u8","")
+  }))
+  
+  const item = parsedOverviews.find((item) => item.quality === `${quality}p`.replace('.m38u',""))
 
   if (!item) throw new Error("Requested quality not found")
 

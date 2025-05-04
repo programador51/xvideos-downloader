@@ -1,5 +1,4 @@
 import ad from "data-base64:~assets/ad.png"
-import aleja from "data-base64:~assets/kraleja_sexcams.gif"
 import styleText from "data-text:~/style.scss"
 import Swal from "sweetalert2"
 import { Storage } from "@plasmohq/storage"
@@ -68,21 +67,21 @@ function toggleBlockDownloads(disable = true) {
 }
 
 function appendMyOwnAds() {
-  const ads = document.getElementById("video-right").nextElementSibling
+  // const ads = document.getElementById("video-right").nextElementSibling
 
-  const FANSLY_LINK = "https://fans.ly/packsmexico"
+  // const FANSLY_LINK = "https://fans.ly/packsmexico"
 
-  const adImage = document.createElement("img")
-  adImage.src = aleja
-  adImage.classList.add("fanslyAd")
-  adImage.addEventListener("click", () => window.open(FANSLY_LINK, "_blank"))
-  ads.appendChild(adImage)
+  // const adImage = document.createElement("img")
+  // adImage.src = aleja
+  // adImage.classList.add("fanslyAd")
+  // adImage.addEventListener("click", () => window.open(FANSLY_LINK, "_blank"))
+  // ads.appendChild(adImage)
 
-  const fanslyLink = document.createElement("a")
-  fanslyLink.textContent = "SEXCAM NOW!"
-  fanslyLink.href = FANSLY_LINK
-  fanslyLink.classList.add("fanslyAdLink")
-  ads.appendChild(fanslyLink)
+  // const fanslyLink = document.createElement("a")
+  // fanslyLink.textContent = "SEXCAM NOW!"
+  // fanslyLink.href = FANSLY_LINK
+  // fanslyLink.classList.add("fanslyAdLink")
+  // ads.appendChild(fanslyLink)
 
   const bannerAd = document.createElement("div")
   const imgBanner = document.createElement("img")
@@ -175,7 +174,15 @@ function saveChunk(chunk: ChunkDownloaded) {
     base64ToFile(item.base64, item.numberOfChunk)
   )
 
-  const filename = document.getElementById(`title-auto-tr`).textContent;
+  const domTitle = document.getElementById(`title-auto-tr`);
+  const subDomTitle = document.getElementsByClassName('page-title');
+
+  let filename = `${window.crypto.randomUUID()}`;
+
+  if(domTitle!==null) filename = domTitle.textContent;
+  if(subDomTitle!==null) filename = subDomTitle[0].textContent;
+
+  // const filename = domTitle === null ? window.crypto.randomUUID(): domTitle.textContent;
 
   mergeTsFiles(chunksParsed).then((file) => downloadBlob(file,filename))
 
